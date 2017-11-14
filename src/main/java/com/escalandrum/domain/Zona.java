@@ -1,25 +1,35 @@
 package com.escalandrum.domain;
 
-import org.springframework.data.annotation.Id;
+import java.util.Collections;
+import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "zona")
 public class Zona {
 
 	@Id
 	public String id;
 	
 	public String nombre;
-	public String Descripcion;
+	public String descripcion;
 	public Location ubicacion;
+	public List<Sector> sectores;
 	
-	public Zona() {}
+	//public Zona() {}
 	
 	public Zona(String nombre, String descripcion, Location ubicacion) {
 		super();
 		this.nombre = nombre;
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 		this.ubicacion = ubicacion;
 	}
 	
+	public Zona() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -29,11 +39,11 @@ public class Zona {
 	}
 
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
 
 	public Location getUbicacion() {
@@ -48,5 +58,17 @@ public class Zona {
 	public String toString() {
 		return String.format("Zona [ id: %s nombre : %s ]", id ,nombre);
 	}
+
+	@Override
+	public boolean equals( Object zona) {		
+		return (zona instanceof Zona) ? ((Zona)zona).nombre.equals(this.nombre) : false;
+	}
+	
+	public void agregarSubSector(Sector subsector) {
+		if(sectores == null)
+			this.sectores = Collections.emptyList();
+		this.sectores.add(subsector);
+	}
+	
 	
 }
