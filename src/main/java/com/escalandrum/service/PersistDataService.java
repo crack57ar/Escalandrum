@@ -8,10 +8,12 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 
 import com.escalandrum.domain.Zona;
 import com.mongodb.client.result.UpdateResult;
 
+@Service
 public class PersistDataService {
 	
 	@Autowired

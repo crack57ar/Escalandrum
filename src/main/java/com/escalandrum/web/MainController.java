@@ -24,12 +24,13 @@ public class MainController {
 	@Autowired
 	private PersistDataService service;
 
-	@RequestMapping(value = "/zona", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/zonas", method = RequestMethod.GET)
 	public String zonas(Map<String, Object> model) {
 		logger.debug("obteniendo las zonas...");
 		List<Zona> zonas = service.getAll(Zona.class);
-		model.put("news", zonas);
-		return "index";
+		model.put("zonas", zonas);
+		return "zonas";
 	}
 	
 	@RequestMapping(value = "/zona/{name:.+}", method = RequestMethod.GET)

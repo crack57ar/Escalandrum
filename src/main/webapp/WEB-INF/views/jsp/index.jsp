@@ -15,6 +15,16 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="${coreCss}" rel="stylesheet" />
 
+<script>
+$(document).ready(function(){
+    $("getzonas").click(function(){
+        $.get("/zonas", function(data, status){
+        	$("#dynamic-content").html(data)
+        });
+    });
+});
+</script>
+
 </head>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,8 +40,8 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
-				<li><a href="">Nueva Via</a></li>
-				<li><a href="#">Zonas</a></li>
+				<li><a href="#">Nueva Via</a></li>
+				<li><a id="getzonas" href="#">Zonas</a></li>
 				<li><a href="#">Maniobras</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -88,6 +98,10 @@
 	 Consulta los sectores cercanos a la zona donde deseas ir y mira toda la info de la via, para no meterte en lios. ;D  
   </p>
   
+</div>
+
+<div id="dynamic-content" class="container">
+
 </div>
 
 <div class="container">
