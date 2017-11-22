@@ -7,22 +7,22 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Escalandrum</title>
 
-<spring:url value="/resources/core/css/hello.css" var="coreCss" />
-<spring:url value="/resources/core/css/bootstrap.min.css"
-	var="bootstrapCss" />
-<!-- <link href="${bootstrapCss}" rel="stylesheet" /> -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="${coreCss}" rel="stylesheet" />
+<spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
+<link href="${bootstrapCss}" rel="stylesheet" />
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<spring:url value="/resources/core/js/jquery-3.2.1.min.js" var="jqueryJs" />
+<spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
+<script src="${jqueryJs}"></script>
+<script src="${bootstrapJs}"></script>
 
 <script>
-$(document).ready(function(){
-    $("getzonas").click(function(){
+function getzonas(){
         $.get("/zonas", function(data, status){
         	$("#dynamic-content").html(data)
         });
-    });
-});
+}
+
 </script>
 
 </head>
@@ -41,7 +41,7 @@ $(document).ready(function(){
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
 				<li><a href="#">Nueva Via</a></li>
-				<li><a id="getzonas" href="#">Zonas</a></li>
+				<li><a href="#" onclick="getzonas()">Zonas</a></li>
 				<li><a href="#">Maniobras</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -67,11 +67,11 @@ $(document).ready(function(){
 	<div class="carousel-inner">
 		<div class="item active">
 			<img class="d-block img-fluid"
-				src="/resources/core/images/escalada1.jpg" alt="First slide">
+				src="/resources/core/images/escalada3.jpg" alt="First slide">
 		</div>
 		<div class="item">
 			<img class="d-block img-fluid"
-				src="/resources/core/images/escalada2.jpg"
+				src="/resources/core/images/escalada3.jpg"
 				alt="Second slide">
 		</div>
 		<div class="item">
@@ -101,7 +101,7 @@ $(document).ready(function(){
 </div>
 
 <div id="dynamic-content" class="container">
-
+	Aca deberian ir las zonas
 </div>
 
 <div class="container">
@@ -110,15 +110,6 @@ $(document).ready(function(){
 		<p>© Escalandrum 2017</p>
 	</footer>
 </div>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<spring:url value="/resources/core/js/hello.js" var="coreJs" />
-<spring:url value="/resources/core/js/bootstrap.min.js"
-	var="bootstrapJs" />
-
-<script src="${coreJs}"></script>
-<script src="${bootstrapJs}"></script>
 
 </body>
 </html>

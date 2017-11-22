@@ -26,6 +26,10 @@ public class Zona {
 		this.ubicacion = ubicacion;
 	}
 	
+	public List<Sector> getSectores() {
+		return sectores;
+	}
+
 	public Zona() {
 		// TODO Auto-generated constructor stub
 	}

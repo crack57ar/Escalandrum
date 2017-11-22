@@ -11,12 +11,17 @@
 	  </layout>
 	</appender>
 
-	<logger name="org.springframework" level="debug"
+	<logger name="org.springframework" level="info"
+                additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="org.mongodb.driver" level="info"
                 additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="com.mkyong.helloworld" level="debug"
+	<logger name="com.escalandrum" level="debug"
                 additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
