@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +32,7 @@ public class MainController {
 		logger.debug("obteniendo las zonas...");
 		List<Zona> zonas = service.getAll(Zona.class);
 		model.put("zonas", zonas);
-		return "zonas";
+		return "tiles/zonas";
 	}
 	
 	@RequestMapping(value = "/zona/{name:.+}", method = RequestMethod.GET)
@@ -38,23 +40,25 @@ public class MainController {
 		logger.debug("obteniendo la zona {}", name);
 		Zona zona = service.getByName(name, Zona.class);
 		model.put("zona",zona);
-		return "zona";
+		return "tiles/zona";
 	}
 	
 	@RequestMapping(value = "/zona/insertar", method = RequestMethod.GET)
 	public ModelAndView insertarZona() {
-		ModelAndView mv = new ModelAndView("zona", "zona", new Zona());
+		ModelAndView mv = new ModelAndView("tiles/nueva_zona", "zona", new Zona());
 		return mv;
 	}
 	
 	@RequestMapping(value = "/zona/insertar", method = RequestMethod.POST)
-	public String insertarZona(@ModelAttribute Zona zona, 	
-			   ModelMap model) {
-			
-			model.addAttribute("nombre", zona.getNombre());
-			model.addAttribute("descripcion", zona.getDescripcion());
-			model.addAttribute("ubicacion", zona.ubicacion);
-		return "zonaSubmit";
+	public String insertarZona(@ModelAttribute("zona") Zona zona, 	
+			BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+            return "tiles/error";
+        }else {		
+        	service.save(zona);        	
+			model.addAttribute("la zona " + zona.getNombre() + "agregada con exito!");
+        }
+		return "tiles/exito";
 	}
 	
 }

@@ -5,13 +5,17 @@ public class Location {
 	public double latitud;
 	public double longitud;
 	
+	public Location() {
+		latitud = 0;
+		longitud = 0;
+	}	
 	
 	public Location(double latitud, double longitud) {
 		super();
 		this.latitud = latitud;
 		this.longitud = longitud;
-	}
-
+	}	
+	
 	@Override
 	public boolean equals( Object location) {		
 		return (location instanceof Location) ? 

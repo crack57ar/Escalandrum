@@ -19,7 +19,7 @@ public class WelcomeController {
 
 		logger.debug("Wellcome to escalandrum!");
 
-		return "index";
+		return "tiles/index";
 	}
 
 	
