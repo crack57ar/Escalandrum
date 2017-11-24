@@ -1,24 +1,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuJf_gatA6sr-m_uBt4ztLKTvLgzxLLuE"></script>
+
 <script type="text/javascript">
-$(function () {
-
-    function initMap() {
-
-        var location = new google.maps.LatLng(50.0875726, 14.4189987);
-
-        var mapCanvas = document.getElementById('map');
-        var mapOptions = {
-            center: location,
-            zoom: 16,
-            panControl: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-
-    }
-
-    google.maps.event.addDomListener(window, 'load', initMap);
-});
+function myMap() {
+	var mapOptions = {
+	    center: new google.maps.LatLng(51.5, -0.12),
+	    zoom: 10,
+	    mapTypeId: google.maps.MapTypeId.HYBRID
+	}
+	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+	}
 </script>
 
 <h3>Agregar Zona de Escalada</h3>
@@ -40,8 +32,8 @@ $(function () {
 	<form:hidden id="longitud" path="ubicacion.longitud"/>
 	<form:hidden id="latitud" path="ubicacion.latitud"/>
 	<!-- parametros relativos a locacion (google map insertado)-->
-	<div id="map"></div>
+	<div id="map" style="width:400px;height:400px;background:yellow"></div>
 </form:form>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
+
         
